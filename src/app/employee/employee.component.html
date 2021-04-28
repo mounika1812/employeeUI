@@ -1,0 +1,76 @@
+<div *ngIf="hasError" class="error-message">
+    {{error}}
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Employee Type</th>
+      <th scope="col">No of Days Worked</th>
+      <th scope="col">No of Vacations Accumulated</th>
+      <th scope="col">No of Vacations Taken</th>
+      <th scope="col">Max Vacation Days Per Year</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.employeeType }}</td>
+      <td>{{ employee.numberOfDaysWorked }}</td>
+      <td>{{ employee.numberOfVacationDaysAccumulated }}</td>
+ 
+      <td>{{ employee.numberOfVacationDaysTaken }}</td>
+      <td>{{ employee.maxVacationDaysPerYear }}</td>
+      <td>
+        <div *ngIf="action">
+            <button (click)="workLogMethod(employee.id)">Work Log</button>
+            <button (click)="takeVacationMethod(employee.id)">Take Vacation</button>
+        </div>
+        <div *ngIf="showWorkLog && selectedEmployee == employee.id">
+            <input type="number" [(ngModel)]="workDays" placeholder="Work Days"/>
+            <button (click)="saveWorkLog(employee.id)">Save</button>
+            <button (click)="cancle()">Cancel</button>
+        </div>
+        <div *ngIf="showTakeVacation && selectedEmployee == employee.id">
+            <input type="number" [(ngModel)]="vacation" placeholder="Vacation"/>
+            <button (click)="saveVacation(employee.id)">Save</button>
+            <button (click)="cancle()">Cancel</button>
+        </div>
+    </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #workLog let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Work Log</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <input type="number" placeholder="Work Days"/>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('workLog')">Update</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cross click')">Close</button>
+    </div>
+  </ng-template>
+
+  <ng-template #takeVacation let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      This is example from ItSolutionStuff.com
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    </div>
+  </ng-template>
