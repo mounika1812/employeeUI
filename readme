@@ -1,0 +1,15 @@
+WorkManagement API:
+Spring Boot Project (Java Project)
+Do mvn clean install
+Start the spring boot project
+It will run on 8081 port.
+work-management:
+Angular Project
+Do npm install
+To start application use npm start. So it will start with proxy settings.
+Project will start on 4200 port.
+UI:
+localhost/4200 starts the project with a table of inbuild employees.
+Each Row has two options. 1. WorkLog and 2. Take Vacation.
+if you click on any one of those will get input field in the same place so that we can update values.
+The updated values will be shown on UI table.
