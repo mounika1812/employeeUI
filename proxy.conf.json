@@ -1,6 +1,6 @@
 {
   "/api/*": {
-      "target": "http://localhost:8081/api/",
+      "target": "http://workmanagement-env.eba-sunzfmpc.us-east-2.elasticbeanstalk.com/api/",
       "pathRewrite": { "^/api": "" },
       "secure": false,
       "changeOrigin": true,
